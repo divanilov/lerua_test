@@ -14,5 +14,5 @@ export class AppController {
   @Get('alive')
   heartbeat() {
     return 'alive';
- }
+  }
 }

@@ -1,3 +1,3 @@
 export interface TestMessage {
-  [propName: string]: string
+  [propName: string]: string;
 }

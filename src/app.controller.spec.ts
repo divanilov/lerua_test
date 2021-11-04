@@ -5,7 +5,7 @@ import { AppService } from './app.service';
 describe('AppController', () => {
   let appController: AppController;
   let appService: AppService;
-  const testMessage = {test: "OK"};
+  const testMessage = { test: 'OK' };
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
@@ -25,7 +25,9 @@ describe('AppController', () => {
 
   describe('controller', () => {
     it('should return test message', async () => {
-      jest.spyOn(appService, 'getMessage').mockImplementation(() => testMessage);
+      jest
+        .spyOn(appService, 'getMessage')
+        .mockImplementation(() => testMessage);
 
       expect(await appController.getTestMessage()).toEqual(testMessage);
     });
