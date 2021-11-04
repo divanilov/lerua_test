@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 
 describe('AppController', () => {
   let appController: AppController;
+  let appService: AppService;
+  const testMessage = {test: "OK"};
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
@@ -12,11 +14,24 @@ describe('AppController', () => {
     }).compile();
 
     appController = app.get<AppController>(AppController);
+    appService = new AppService();
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+  describe('service', () => {
+    it('should return  test message', () => {
+      expect(appService.getMessage()).toEqual(testMessage);
+    });
+  });
+
+  describe('controller', () => {
+    it('should return test message', async () => {
+      jest.spyOn(appService, 'getMessage').mockImplementation(() => testMessage);
+
+      expect(await appController.getTestMessage()).toEqual(testMessage);
+    });
+
+    it('alive message', async () => {
+      expect(await appController.heartbeat()).toBeTruthy();
     });
   });
 });
