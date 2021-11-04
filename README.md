@@ -8,10 +8,16 @@
     
     $> docker-compose -version
     docker-compose version 1.25.4, build 8d51620a
-2. Check config file at
+   
+2. Install Node dependencies:
+    ```$bash
+    $> npm install
+
+3. Check config file at
     ```$bash
     src/config/configuration.ts
-3. Start service
+
+4. Start service
     ```$bash
     $> docker-compose -f docker-compose.dev.yml up
    
